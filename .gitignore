@@ -1,0 +1,4 @@
+﻿# Ignore local/OS artefacts
+Thumbs.db
+Desktop.ini
+.vscode/
