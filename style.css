@@ -383,7 +383,7 @@ a {
 .card-grid {
   margin-top: 26px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -395,7 +395,7 @@ a {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 390px;
+  min-height: 420px;
   background:
     var(--card-fill) padding-box,
     linear-gradient(135deg, #2a7dcf, #d8b261 52%, #1f6ab4) border-box;
@@ -410,8 +410,8 @@ a {
 }
 
 .service-image {
-  width: 74px;
-  height: 74px;
+  width: 78px;
+  height: 78px;
   object-fit: contain;
   margin-bottom: 20px;
 }
@@ -422,7 +422,7 @@ a {
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  line-height: 1.08;
+  line-height: 1.12;
 }
 
 .service-card p {
