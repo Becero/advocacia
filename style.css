@@ -383,40 +383,51 @@ a {
 .card-grid {
   margin-top: 26px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
 }
 
 .service-card {
-  padding: 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(15, 79, 136, 0.18);
-  background: #ffffff;
-  box-shadow: var(--shadow-soft);
+  padding: 26px 20px 22px;
+  border-radius: 4px;
+  border: none;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 390px;
+}
+
+.service-card.tone-blue {
+  background: linear-gradient(140deg, #0b2f63, #071f49 58%, #081f45);
+}
+
+.service-card.tone-gold {
+  background: linear-gradient(140deg, #92702b, #af8634 58%, #8b6a28);
 }
 
 .service-image {
-  width: 56px;
-  height: 56px;
+  width: 74px;
+  height: 74px;
   object-fit: contain;
-  padding: 8px;
-  border-radius: 12px;
-  border: 1px solid rgba(15, 79, 136, 0.14);
-  background: #f3f8ff;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .service-card h3 {
-  font-size: 1.06rem;
-  margin-bottom: 6px;
+  color: #ffffff;
+  font-size: clamp(1.38rem, 2.1vw, 1.85rem);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.08;
 }
 
 .service-card p {
   margin: 0;
-  line-height: 1.55;
-  font-size: 0.97rem;
+  line-height: 1.5;
+  font-size: 1.03rem;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 28ch;
 }
 
 .steps {
@@ -531,9 +542,12 @@ a {
 @media (max-width: 1080px) {
   .hero-grid,
   .two-col,
-  .card-grid,
   .steps {
     grid-template-columns: 1fr;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-visual {
@@ -581,6 +595,10 @@ a {
 
   .hero {
     padding-top: 68px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
   }
 
   .faq-grid {
