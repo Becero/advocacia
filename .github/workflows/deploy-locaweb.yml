@@ -15,11 +15,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: FTP Deploy Locaweb
-        uses: locaweb/ftp-deploy@1.0.0
-        with:
-          host: ftp.asmjuridico1.hospedagemdesites.ws
-          user: asmjuridico1
-          password: ${{ secrets.PASS }}
-          localDir: "./"
-          remoteDir: "./public_html/"
+      - name: Validar secret FTP
+        env:
+          FTP_PASSWORD: ${{ secrets.PASS }}
+        run: |
+          if [ -z "$FTP_PASSWORD" ]; then
+            echo "::error::O secret PASS não está configurado no repositório."
+            exit 1
+          fi
+
+      - name: Instalar lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Publicar em public_html
+        env:
+          FTP_HOST: ftp.asmjuridico1.hospedagemdesites.ws
+          FTP_USER: asmjuridico1
+          FTP_PASSWORD: ${{ secrets.PASS }}
+        run: |
+          lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_HOST" <<'EOF'
+          set ftp:ssl-force false
+          set ssl:verify-certificate false
+          mirror --reverse --continue --verbose \
+            --exclude-glob .git* \
+            --exclude-glob .github* \
+            ./ ./public_html/
+          bye
+          EOF
