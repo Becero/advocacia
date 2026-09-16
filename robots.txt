@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://becero.github.io/advocacia/sitemap.xml
