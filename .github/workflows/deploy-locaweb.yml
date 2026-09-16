@@ -22,4 +22,4 @@ jobs:
           user: asmjuridico1
           password: ${{ secrets.PASS }}
           localDir: "./"
-          remoteDir: "public_html"
+          remoteDir: "./public_html/"
